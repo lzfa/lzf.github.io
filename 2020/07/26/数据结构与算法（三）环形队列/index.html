@@ -6,17 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | 李志福的个人博客</title>
+  <title>数据结构与算法（三）环形队列 | 李志福的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="李志福的个人博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="李志福的个人博客">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="数组实现环形队列实现:解决之前单向的问题，让数组达到复用的效果，即：当我们从数组队列中取出了数据，那取出数据后后这个空间可以再次使用 思路分析首先对rear 和 front的含义做调整  rear：指向队列最后一个元素的后一个位置  初始值为0 front：指向队列的头一个元素  初始值为0  当 rear 指针指向maxSize - 1时，也就是rear &#x3D; maxSize - 1时，需要判断r">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构与算法（三）环形队列">
+<meta property="og:url" content="http://yoursite.com/2020/07/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%E7%8E%AF%E5%BD%A2%E9%98%9F%E5%88%97/index.html">
 <meta property="og:site_name" content="李志福的个人博客">
-<meta property="og:description" content="李志福的个人博客">
+<meta property="og:description" content="数组实现环形队列实现:解决之前单向的问题，让数组达到复用的效果，即：当我们从数组队列中取出了数据，那取出数据后后这个空间可以再次使用 思路分析首先对rear 和 front的含义做调整  rear：指向队列最后一个元素的后一个位置  初始值为0 front：指向队列的头一个元素  初始值为0  当 rear 指针指向maxSize - 1时，也就是rear &#x3D; maxSize - 1时，需要判断r">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191210174837654.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDczOTA1,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191210174845731.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDczOTA1,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2020-07-26T12:39:04.000Z">
+<meta property="article:modified_time" content="2020-07-26T14:29:26.817Z">
 <meta property="article:author" content="李志福">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20191210174837654.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDczOTA1,size_16,color_FFFFFF,t_70">
   
     <link rel="alternative" href="/atom.xml" title="李志福的个人博客" type="application/atom+xml">
   
@@ -148,103 +153,241 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-数据结构与算法（三）环形队列" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      数据结构与算法（三）环形队列
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%E7%8E%AF%E5%BD%A2%E9%98%9F%E5%88%97/" class="archive-article-date">
+
+        
+        <a href="/2020/07/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%E7%8E%AF%E5%BD%A2%E9%98%9F%E5%88%97/" class="archive-article-date">
   	<time datetime="2020-07-26T12:39:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-26</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%E7%8E%AF%E5%BD%A2%E9%98%9F%E5%88%97/">数据结构与算法（三）环形队列</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="数组实现环形队列"><a href="#数组实现环形队列" class="headerlink" title="数组实现环形队列"></a>数组实现环形队列</h2><p>实现:解决之前单向的问题，让数组达到复用的效果，即：当我们从数组队列中取出了数据，那取出数据后后这个空间可以再次使用</p>
+<h2 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h2><p>首先对rear 和 front的含义做调整</p>
+<ol>
+<li>rear：指向队列最后一个元素的后一个位置  初始值为0</li>
+<li>front：指向队列的头一个元素  初始值为0</li>
+</ol>
+<p>当 <code>rear</code> 指针指向<code>maxSize - 1</code>时，也就是rear = maxSize - 1时，需要判断<code>rear</code>的前面是否有空闲空间，也就说<code>front</code>是否产生了变化并且已经不在初始的那个位置了<br><img src="https://img-blog.csdnimg.cn/20191210174837654.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDczOTA1,size_16,color_FFFFFF,t_70" alt="">)<img src="https://img-blog.csdnimg.cn/20191210174845731.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDczOTA1,size_16,color_FFFFFF,t_70" alt=""></p>
+<p>说明：</p>
+<p>1.rear指向的位置始终都是没有数据的，目的是预留一个位置作为约定</p>
+<p>2.rear和front含义发生调整后，判断队列满的条件是<code>( rear + 1 )% maxsize = front</code></p>
+<p>举例：如上图 rear = 7，front = 0，maxSize =8时    （7+1）%8=0    此时队列满</p>
+<p>解释：可以看出当rear跟front相邻时就是队列满的条件，如:</p>
+<table>
+<thead>
+<tr>
+<th>rear</th>
+<th>front</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>1</td>
+<td>满</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>满</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>满</td>
+</tr>
+</tbody></table>
+<p>以此类推可以看出当<code>rear + 1 = front</code>时就可以说队列满，那为什么要%maxsize呢？</p>
+<table>
+<thead>
+<tr>
+<th>rear</th>
+<th>front</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>7</td>
+<td>0</td>
+<td>满</td>
+</tr>
+</tbody></table>
+<p>可以看到rear到达maxsize - 1 时<code>rear + 1= front</code>就不满足了，所以需要取模从而达到数组空间复用的效果</p>
+<p>3.判断队列为空的条件是rear = front</p>
+<p>4.队列中有效数据的个数是<code>(rear + maxsize - front) % maxsize</code><br>为什么要取模？答：因为是环形队列，rear有可能指到队列最前面。<br>打个比方,当<code>rear = 0,maxsize = 4 ,front = 0</code>时，该队列中有多少个有效的数据？<br>分析：（0 + 3 - 0）% 3 = 0，该队列中有效的数据个数为0个，因为rear = front ，则证明是空队列</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CircleArrayQueueDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//测试</span></span><br><span class="line">        <span class="comment">//创建一个环形队列</span></span><br><span class="line">        CircleArray queue = <span class="keyword">new</span> CircleArray(<span class="number">4</span>); <span class="comment">//其队列的有效数据最大是3</span></span><br><span class="line">        <span class="keyword">char</span> key = <span class="string">' '</span>;<span class="comment">//接收用户输入</span></span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="comment">//输出一个菜单</span></span><br><span class="line">        <span class="keyword">boolean</span> loop = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">while</span> (loop)&#123;</span><br><span class="line">            System.out.println();</span><br><span class="line">            System.out.println(<span class="string">"s(show):显示队列"</span>);</span><br><span class="line">            System.out.println(<span class="string">"e(exit):退出程序"</span>);</span><br><span class="line">            System.out.println(<span class="string">"a(add):添加数据到队列"</span>);</span><br><span class="line">            System.out.println(<span class="string">"g(get):从队列取出数据"</span>);</span><br><span class="line">            System.out.println(<span class="string">"h(head):查看数据头数据"</span>);</span><br><span class="line">            key = scanner.next().charAt(<span class="number">0</span>);</span><br><span class="line">            <span class="keyword">switch</span> (key)&#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">'s'</span>:</span><br><span class="line">                    queue.showQueue();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">'a'</span>:</span><br><span class="line">                    System.out.println(<span class="string">"输出一个数字"</span>);</span><br><span class="line">                    <span class="keyword">int</span> value = scanner.nextInt();</span><br><span class="line">                    queue.addQueue(value);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">'g'</span>:</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        <span class="keyword">int</span> result = queue.getQueue();</span><br><span class="line">                        System.out.println(<span class="string">"取出的数据："</span>+result);</span><br><span class="line">                    &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">                        System.out.println(e.getMessage());</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">'h'</span>:</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        <span class="keyword">int</span> result = queue.headQueue();</span><br><span class="line">                        System.out.println(<span class="string">"队列头的数据是:"</span>+result);</span><br><span class="line">                    &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">                        System.out.println(e.getMessage());</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">'e'</span>:</span><br><span class="line">                    scanner.close();</span><br><span class="line">                    loop = <span class="keyword">false</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"程序退出！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CircleArray</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> maxSize;<span class="comment">//表示数组的最大容量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> front;<span class="comment">//队列头,初始值0  指向队列的第一个元素</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> rear;<span class="comment">//队列尾，初始值0  指向最后一个元素的后一个位置</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[] arr;<span class="comment">//该数组用于存放数据，模拟队列</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CircleArray</span><span class="params">(<span class="keyword">int</span> arrMaxSize)</span></span>&#123;</span><br><span class="line">        maxSize = arrMaxSize;</span><br><span class="line">        <span class="comment">//初始化数组</span></span><br><span class="line">        arr = <span class="keyword">new</span> <span class="keyword">int</span>[maxSize];</span><br><span class="line">        front = <span class="number">0</span>;</span><br><span class="line">        rear = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 判断是否满</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isFull</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (rear + <span class="number">1</span>)% maxSize == front;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 判断是否为空</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> rear == front;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 添加数据到队列</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">addQueue</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(isFull())&#123;</span><br><span class="line">            System.out.println(<span class="string">"队列已满！"</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        arr[rear] = n ;</span><br><span class="line">        <span class="comment">//将rear后移，这里必须考虑取模</span></span><br><span class="line">        rear = (rear + <span class="number">1</span>)% maxSize;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取队列的数据，出队列</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getQueue</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(isEmpty())&#123;</span><br><span class="line">            <span class="keyword">throw</span>  <span class="keyword">new</span> RuntimeException(<span class="string">"队列空，不能取数据"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//front指向队列的第一个元素</span></span><br><span class="line">        <span class="comment">//1.先把front对应的值保留到一个临时变量</span></span><br><span class="line">        <span class="comment">//2.将front后移 考虑取模</span></span><br><span class="line">        <span class="comment">//3.将临时保存的变量返回</span></span><br><span class="line">        <span class="keyword">int</span> value = arr[front];</span><br><span class="line">        front = (front+<span class="number">1</span>)%maxSize;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 显示队列数据</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showQueue</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(isEmpty())&#123;</span><br><span class="line">            System.out.println(<span class="string">"队列空"</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//从front开始遍历</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = front ;i&lt;front+getSize();i++)&#123;</span><br><span class="line">            System.out.println(arr[i%maxSize]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 当前队列有效数据的个数</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getSize</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (rear + maxSize - front)% maxSize;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 显示队列的头数据  注意不是取数据</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">headQueue</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(isEmpty())&#123;</span><br><span class="line">            <span class="keyword">throw</span>  <span class="keyword">new</span> RuntimeException(<span class="string">"队列空，没有数据"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> arr[front];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>环形队列判满条件：<code>（rear +1） % maxsize == front</code></li>
+<li>环形队列判空条件：<code>rear == front</code></li>
+<li>环形队列有效数据的个数 <code>(rear + maxsize - front) % maxsize</code></li>
+<li>环形队列中rear的含义：指向队列中最后一个数据的前一个位置，因为要预留一个空间作为约定</li>
+<li>环形队列中front的含义：指向队列头（即：队列中的第一个数据）</li>
+</ol>
 
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/zhifubao.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/WeChat2.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%E7%8E%AF%E5%BD%A2%E9%98%9F%E5%88%97/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89%E5%8D%95%E5%90%91%E9%98%9F%E5%88%97/" class="archive-article-date">
-  	<time datetime="2020-07-26T03:59:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-26</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/07/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89%E5%8D%95%E5%90%91%E9%98%9F%E5%88%97/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数据结构与算法（二）单向队列</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89%E5%8D%95%E5%90%91%E9%98%9F%E5%88%97/">数据结构与算法（二）单向队列</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数组实现环形队列"><span class="toc-number">1.</span> <span class="toc-text">数组实现环形队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#思路分析"><span class="toc-number">2.</span> <span class="toc-text">思路分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-number">3.</span> <span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/" class="archive-article-date">
-  	<time datetime="2020-07-25T13:07:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-25</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/">数据结构与算法（一）稀疏数组</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -267,8 +410,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
