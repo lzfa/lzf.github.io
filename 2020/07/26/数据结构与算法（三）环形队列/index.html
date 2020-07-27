@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>数据结构与算法（三）环形队列 | 李志福的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="数组实现环形队列实现:解决之前单向的问题，让数组达到复用的效果，即：当我们从数组队列中取出了数据，那取出数据后后这个空间可以再次使用 思路分析首先对rear 和 front的含义做调整  rear：指向队列最后一个元素的后一个位置  初始值为0 front：指向队列的头一个元素  初始值为0  当 rear 指针指向maxSize - 1时，也就是rear &#x3D; maxSize - 1时，需要判断r">
+  <meta name="description" content="数组实现环形队列实现:解决之前单向的问题，让数组达到复用的效果，即：当我们从数组队列中取出了数据，那取出数据后后这个空间可以再次使用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构与算法（三）环形队列">
 <meta property="og:url" content="http://yoursite.com/2020/07/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%E7%8E%AF%E5%BD%A2%E9%98%9F%E5%88%97/index.html">
 <meta property="og:site_name" content="李志福的个人博客">
-<meta property="og:description" content="数组实现环形队列实现:解决之前单向的问题，让数组达到复用的效果，即：当我们从数组队列中取出了数据，那取出数据后后这个空间可以再次使用 思路分析首先对rear 和 front的含义做调整  rear：指向队列最后一个元素的后一个位置  初始值为0 front：指向队列的头一个元素  初始值为0  当 rear 指针指向maxSize - 1时，也就是rear &#x3D; maxSize - 1时，需要判断r">
+<meta property="og:description" content="数组实现环形队列实现:解决之前单向的问题，让数组达到复用的效果，即：当我们从数组队列中取出了数据，那取出数据后后这个空间可以再次使用">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20191210174837654.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDczOTA1,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20191210174845731.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDczOTA1,size_16,color_FFFFFF,t_70">
 <meta property="article:published_time" content="2020-07-26T12:39:04.000Z">
-<meta property="article:modified_time" content="2020-07-26T14:29:26.817Z">
+<meta property="article:modified_time" content="2020-07-27T02:42:02.488Z">
 <meta property="article:author" content="李志福">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/20191210174837654.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDczOTA1,size_16,color_FFFFFF,t_70">
@@ -173,7 +173,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="数组实现环形队列"><a href="#数组实现环形队列" class="headerlink" title="数组实现环形队列"></a>数组实现环形队列</h2><p>实现:解决之前单向的问题，让数组达到复用的效果，即：当我们从数组队列中取出了数据，那取出数据后后这个空间可以再次使用</p>
+        <h2 id="数组实现环形队列"><a href="#数组实现环形队列" class="headerlink" title="数组实现环形队列"></a>数组实现环形队列</h2><p>实现:解决之前单向的问题，让数组达到复用的效果，即：当我们从数组队列中取出了数据，那取出数据后后这个空间可以再次使用<a id="more"></a></p>
 <h2 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h2><p>首先对rear 和 front的含义做调整</p>
 <ol>
 <li>rear：指向队列最后一个元素的后一个位置  初始值为0</li>
